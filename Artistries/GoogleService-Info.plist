@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>512072001956-f5oeftk2f8cejtm4472es0bar738pqtj.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.512072001956-f5oeftk2f8cejtm4472es0bar738pqtj</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBZEcoeDGH5bvVDGPnglymFaH3ftyfewWQ</string>
+	<key>GCM_SENDER_ID</key>
+	<string>512072001956</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>sevmoreno.com.Artistries</string>
+	<key>PROJECT_ID</key>
+	<string>artistries-8645d</string>
+	<key>STORAGE_BUCKET</key>
+	<string>artistries-8645d.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:512072001956:ios:60b679d7bed632c5393931</string>
+	<key>DATABASE_URL</key>
+	<string>https://artistries-8645d.firebaseio.com</string>
+</dict>
+</plist>
