@@ -56,6 +56,17 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     
     func setUpViewControllers () {
         
+        
+        // real  homie
+   
+        
+        let layout3 = UICollectionViewFlowLayout()
+        let photoSelectorController1 = HomeController(collectionViewLayout: layout3)
+        let homeNavController2 = UINavigationController(rootViewController: photoSelectorController1)
+        photoSelectorController1.tabBarItem.image = UIImage(named: "profile_selected")
+        
+        // ------
+        
         let layout = UICollectionViewFlowLayout()
         let userProfileController = UserProfileController(collectionViewLayout: layout)
         userProfileController.tabBarItem.image = UIImage(named: "profile_selected")
@@ -77,7 +88,8 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         
         tabBar.tintColor = .black
         
-        viewControllers = [userProfileController,
+        viewControllers = [homeNavController2,
+                           userProfileController,
                            homeNavController,
                            UIViewController()]
         
