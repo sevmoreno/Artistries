@@ -24,6 +24,8 @@ class PhotoSelectorController: UICollectionViewController, UICollectionViewDeleg
         super.viewDidLoad()
         collectionView?.backgroundColor = .yellow
         
+        collectionView?.reloadData()
+        
         setupNavigationButtons()
         
         collectionView?.register(PhotoSelectorCell.self, forCellWithReuseIdentifier: cellId)

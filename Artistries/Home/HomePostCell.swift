@@ -14,9 +14,35 @@ class HomePostCell: UICollectionViewCell {
         didSet {
             guard let postImageUrl = post?.imageUrl else { return }
             
-            photoImageView.loadImage(urlString: postImageUrl)
+             photoImageView.loadImage(urlString: postImageUrl)
+             usernameLabel.text = post?.user.username
+            guard let profileuserURL = post?.user.profileImageUrl else {return}
+            userProfileImageView.loadImage(urlString: profileuserURL)
+            //print("ESTE ES EL USUERNAME CELL")
+          //  print(post?.user.username)
+           // usernameLabel.text = post?.user.username
+            
+            //guard let profileuserURL = post?.user.profileImageUrl else {return}
+           // userProfileImageView.loadImage(urlString: profileuserURL)
+            
+            setupAttributedCaption()
         }
     }
+    
+    fileprivate func setupAttributedCaption() {
+        guard let post = self.post else { return }
+        
+        let attributedText = NSMutableAttributedString(string: post.user.username, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 14)])
+        
+        attributedText.append(NSAttributedString(string: " \(post.caption)", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)]))
+        
+        attributedText.append(NSAttributedString(string: "\n\n", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 4)]))
+        
+        attributedText.append(NSAttributedString(string: "1 week ago", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14), NSAttributedString.Key.foregroundColor: UIColor.gray]))
+        
+        captionLabel.attributedText = attributedText
+    }
+    
     
     let userProfileImageView: CustomImageView = {
         let iv = CustomImageView()
