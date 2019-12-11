@@ -85,7 +85,12 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         let homeNavController = UINavigationController(rootViewController: photoSelectorController)
         photoSelectorController.tabBarItem.image = UIImage(named: "profile_selected")
       //
+        // Search
         
+        let layoutSearch = UICollectionViewLayout ()
+        let searchViewController = SearchViewController(collectionViewLayout: layoutSearch)
+        let searchNavController = UINavigationController(rootViewController: searchViewController)
+        searchViewController.tabBarItem.image = UIImage(named: "profile_selected")
         // Profile
       // let navController = UINavigationController(rootViewController: userProfileController)
         
@@ -97,7 +102,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         viewControllers = [homeNavController2,
                            homeNavControllerA,
                            homeNavController,
-                           UIViewController()]
+                           searchNavController]
         
         // CORRECT CENTRADO DE TAB BAR
         
