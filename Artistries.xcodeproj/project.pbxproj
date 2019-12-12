@@ -32,6 +32,8 @@
 		65440D9F239AC6A600D4CEC2 /* HomePostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65440D9E239AC6A600D4CEC2 /* HomePostCell.swift */; };
 		65440DA1239AC6DF00D4CEC2 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65440DA0239AC6DF00D4CEC2 /* CustomImageView.swift */; };
 		65D31E0623A06FAA001242FB /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D31E0523A06FAA001242FB /* SearchViewController.swift */; };
+		65D31E0823A15EA0001242FB /* UserSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D31E0723A15EA0001242FB /* UserSearchCell.swift */; };
+		65D31E0A23A2CF2E001242FB /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D31E0923A2CF2E001242FB /* CameraController.swift */; };
 		BBB58398002287DA3995A2C0 /* Pods_ArtistriesUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB60C9000637288E806D1075 /* Pods_ArtistriesUITests.framework */; };
 		C056A212C5C99BAD7114B875 /* Pods_Artistries.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 048EF02524D5A385034444C2 /* Pods_Artistries.framework */; };
 /* End PBXBuildFile section */
@@ -88,6 +90,8 @@
 		65440D9E239AC6A600D4CEC2 /* HomePostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePostCell.swift; sourceTree = "<group>"; };
 		65440DA0239AC6DF00D4CEC2 /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 		65D31E0523A06FAA001242FB /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		65D31E0723A15EA0001242FB /* UserSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchCell.swift; sourceTree = "<group>"; };
+		65D31E0923A2CF2E001242FB /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
 		6B2BFCFED6BAB9344F4B2705 /* Pods-ArtistriesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArtistriesTests.release.xcconfig"; path = "Target Support Files/Pods-ArtistriesTests/Pods-ArtistriesTests.release.xcconfig"; sourceTree = "<group>"; };
 		937A27D66D2FCD269D4E4239 /* Pods-ArtistriesUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArtistriesUITests.release.xcconfig"; path = "Target Support Files/Pods-ArtistriesUITests/Pods-ArtistriesUITests.release.xcconfig"; sourceTree = "<group>"; };
 		C769FB5E55F55C0DD95F8E30 /* Pods_ArtistriesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ArtistriesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -161,6 +165,7 @@
 		65440D4A2396E22100D4CEC2 /* Artistries */ = {
 			isa = PBXGroup;
 			children = (
+				65D31E0923A2CF2E001242FB /* CameraController.swift */,
 				65D31E0423A06F8A001242FB /* Search */,
 				65440DA2239AF4F900D4CEC2 /* Home */,
 				65440D9523998A8C00D4CEC2 /* Model */,
@@ -266,6 +271,7 @@
 			isa = PBXGroup;
 			children = (
 				65D31E0523A06FAA001242FB /* SearchViewController.swift */,
+				65D31E0723A15EA0001242FB /* UserSearchCell.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -507,6 +513,7 @@
 				65440D8923982A8E00D4CEC2 /* users.swift in Sources */,
 				65440D4E2396E22100D4CEC2 /* SignUpViewController.swift in Sources */,
 				65440D992399E7AD00D4CEC2 /* Post.swift in Sources */,
+				65D31E0823A15EA0001242FB /* UserSearchCell.swift in Sources */,
 				65440D972399B9E300D4CEC2 /* SharePhoto.swift in Sources */,
 				65440D4C2396E22100D4CEC2 /* AppDelegate.swift in Sources */,
 				65440D852397392000D4CEC2 /* UserProfileController.swift in Sources */,
@@ -515,6 +522,7 @@
 				65440D542396E22100D4CEC2 /* Artistries.xcdatamodeld in Sources */,
 				65440D7F2396E7DC00D4CEC2 /* Extensions.swift in Sources */,
 				65D31E0623A06FAA001242FB /* SearchViewController.swift in Sources */,
+				65D31E0A23A2CF2E001242FB /* CameraController.swift in Sources */,
 				65440D9F239AC6A600D4CEC2 /* HomePostCell.swift in Sources */,
 				65440D9B2399E85F00D4CEC2 /* PostCollectionViewCell.swift in Sources */,
 				65440D8D23997E5600D4CEC2 /* PhotoSelectorController.swift in Sources */,

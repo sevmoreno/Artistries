@@ -11,13 +11,20 @@ import Firebase
 
 class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
+    
+    
+    
+    
     let cellId = "cellId"
     var posts = [Post]()
     
     override func viewDidLoad() {
         
+        NotificationCenter.default.addObserver(self, selector: #selector(handleUpdateFeed), name: SharePhotoController.updateFeedNotificationName, object: nil)
         super.viewDidLoad()
         collectionView?.backgroundColor = .white
+        
+        
         
         collectionView?.reloadData()
         
@@ -27,9 +34,64 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
      //   fetchPosts()
         
-        porusuario()
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
+        collectionView?.refreshControl = refreshControl
+        
+        fetchFollowingUserIds()
+        //porusuario()
         
     }
+    
+    func setupNavigationItems() {
+        navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "logo2"))
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "camera3").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleCamera))
+    }
+    
+    @objc func handleCamera() {
+        print("Showing camera")
+        
+        let cameraController = CameraController()
+        present(cameraController, animated: true, completion: nil)
+    }
+    
+    @objc func handleUpdateFeed() {
+        
+        posts.removeAll()
+        fetchFollowingUserIds()
+    }
+    
+    @objc func handleRefresh() {
+        posts.removeAll()
+        fetchFollowingUserIds()
+    }
+    
+    fileprivate func fetchFollowingUserIds() {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        Database.database().reference().child("following").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            guard let userIdsDictionary = snapshot.value as? [String: Int] else { return }
+            
+            userIdsDictionary.forEach({ (key,value) in
+                
+                print("Sigo a este")
+                print(key)
+               self.fetchPostsTodos(indiviudal: key)
+            })
+            
+   //         userIdsDictionary.forEach({ (key, value) in
+   //             Database.fetchUserWithUID(uid: key, completion: { (user) in
+    //                self.fetchPostsWithUser(user: user)
+   //             })
+            })
+            
+    //    }) { (err) in
+   //         print("Failed to fetch following user ids:", err)
+            
+            
+    }
+    
     
     fileprivate func porusuario() {
         
@@ -38,6 +100,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
             guard let posts = snapshot.value as? [String: Any] else { return }
             print(posts)
+            
             posts.forEach({ (usuario, post) in
                 self.fetchPostsTodos(indiviudal: usuario)
             })
@@ -95,6 +158,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
                     self.posts.append(post)
                  
                    self.collectionView?.reloadData()
+                   self.collectionView?.refreshControl?.endRefreshing()
 
                 }) { (err) in
                     print("Failed to fetch user:", err)
@@ -178,9 +242,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
  
  */
     
-    func setupNavigationItems() {
-     //   navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "logo2"))
-    }
+   
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         

@@ -87,7 +87,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
       //
         // Search
         
-        let layoutSearch = UICollectionViewLayout ()
+        let layoutSearch = UICollectionViewFlowLayout ()
         let searchViewController = SearchViewController(collectionViewLayout: layoutSearch)
         let searchNavController = UINavigationController(rootViewController: searchViewController)
         searchViewController.tabBarItem.image = UIImage(named: "profile_selected")

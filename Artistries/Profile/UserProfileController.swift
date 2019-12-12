@@ -14,6 +14,7 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
     var user: User?
      let cellId = "cellId"
     var posts = [Post] ()
+    var userId: String?
     
     
     override func viewDidLoad() {
@@ -24,22 +25,24 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         
         navigationItem.title = Auth.auth().currentUser?.uid
         
-         fetchUser()
+        
         collectionView?.register(PostCollectionViewCell.self, forCellWithReuseIdentifier: cellId)
         collectionView?.register(UserHeaderCollectionViewCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headerId")
         
         
       setupLogOutButton()
+       fetchUser()
         
-        
-     fetchOrderedPosts()
+  //   fetchOrderedPosts()
         //    fetchPosts()
         
         
     }
     
     fileprivate func fetchUser() {
-        guard let uid = Auth.auth().currentUser?.uid else { print("Salgo1");return }
+        
+        let uid = userId ?? (Auth.auth().currentUser?.uid ?? "")
+       // guard let uid = Auth.auth().currentUser?.uid else { print("Salgo1");return }
         
         print("ESTO ES LO QUE TEIEN SNAPSHOT")
         print(uid)
@@ -58,6 +61,7 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
             print(self.user?.username)
             print (self.user?.profileImageUrl)
             self.collectionView?.reloadData()
+            self.fetchOrderedPosts()
             
         }) { (err) in
             print("Failed to fetch user:", err)
@@ -65,7 +69,9 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
     }
     
     fileprivate func fetchOrderedPosts() {
-        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+         guard let uid = self.user?.uid else { return }
+       // guard let uid = Auth.auth().currentUser?.uid else { return }
         let ref = Database.database().reference().child("posts").child(uid)
         
         //perhaps later on we'll implement some pagination of data
@@ -80,6 +86,8 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
             //            self.posts.append(post)
             
             self.collectionView?.reloadData()
+            
+            
             
         }) { (err) in
             print("Failed to fetch ordered posts:", err)
