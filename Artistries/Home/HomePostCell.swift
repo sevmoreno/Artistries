@@ -8,11 +8,20 @@
 
 import UIKit
 
+protocol HomePostCellDelegate {
+    func didTapComment(post: Post)
+    func didLike(for cell: HomePostCell)
+}
+
+
 class HomePostCell: UICollectionViewCell {
+    
+    var delegate: HomePostCellDelegate?
     
     var post: Post? {
         didSet {
             guard let postImageUrl = post?.imageUrl else { return }
+             likeButton.setImage(post?.hasLiked == true ? #imageLiteral(resourceName: "like_selected").withRenderingMode(.alwaysOriginal) : #imageLiteral(resourceName: "like_unselected").withRenderingMode(.alwaysOriginal), for: .normal)
             
              photoImageView.loadImage(urlString: postImageUrl)
              usernameLabel.text = post?.user.username
@@ -74,27 +83,46 @@ class HomePostCell: UICollectionViewCell {
         return button
     }()
     
-    let likeButton: UIButton = {
+    lazy var likeButton: UIButton = {
         let button = UIButton(type: .system)
-    //    button.setImage(    .withRenderingMode(.alwaysOriginal), for: .normal)
+        button.setImage(#imageLiteral(resourceName: "like_unselected").withRenderingMode(.alwaysOriginal), for: .normal)
+        button.addTarget(self, action: #selector(handleLike), for: .touchUpInside)
         return button
     }()
     
-    let commentButton: UIButton = {
+    @objc func handleLike() {
+        print("Handling like from within cell...")
+        delegate?.didLike(for: self)
+    }
+    
+    lazy var commentButton: UIButton = {
         let button = UIButton(type: .system)
-   //     button.setImage(#imageLiteral(resourceName: "comment").withRenderingMode(.alwaysOriginal), for: .normal)
+        button.setImage(#imageLiteral(resourceName: "comment").withRenderingMode(.alwaysOriginal), for: .normal)
+        button.addTarget(self, action: #selector(handleComment), for: .touchUpInside)
+        //button.addTarget(self, action: #selector(clickcomment), for: .touchUpInside)
+        
         return button
     }()
+    
+   
+    
+    @objc func handleComment() {
+        print("Trying to show comments...")
+        guard let post = post else { return }
+        
+        delegate?.didTapComment(post: post)
+        
+    }
     
     let sendMessageButton: UIButton = {
         let button = UIButton(type: .system)
- //       button.setImage(#imageLiteral(resourceName: "send2").withRenderingMode(.alwaysOriginal), for: .normal)
+        button.setImage(#imageLiteral(resourceName: "send2").withRenderingMode(.alwaysOriginal), for: .normal)
         return button
     }()
     
     let bookmarkButton: UIButton = {
         let button = UIButton(type: .system)
- //       button.setImage(#imageLiteral(resourceName: "ribbon").withRenderingMode(.alwaysOriginal), for: .normal)
+        button.setImage(#imageLiteral(resourceName: "ribbon").withRenderingMode(.alwaysOriginal), for: .normal)
         return button
     }()
     
@@ -103,6 +131,9 @@ class HomePostCell: UICollectionViewCell {
         label.numberOfLines = 0
         return label
     }()
+    
+
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -122,7 +153,7 @@ class HomePostCell: UICollectionViewCell {
         photoImageView.anchor(top: userProfileImageView.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 8, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         photoImageView.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 1).isActive = true
         
-        setupActionButtons()
+         setupActionButtons()
         
         addSubview(captionLabel)
         captionLabel.anchor(top: likeButton.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 8, paddingBottom: 0, paddingRight: 8, width: 0, height: 0)

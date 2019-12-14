@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		4B9E9CF2620AB2CA0F79B372 /* Pods_ArtistriesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C769FB5E55F55C0DD95F8E30 /* Pods_ArtistriesTests.framework */; };
+		65421CC123A2E0A3000B0437 /* PreviewPhotoContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65421CC023A2E0A3000B0437 /* PreviewPhotoContainerView.swift */; };
+		65421CC323A2EC93000B0437 /* CommentsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65421CC223A2EC93000B0437 /* CommentsController.swift */; };
+		65421CC523A429E0000B0437 /* Comments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65421CC423A429E0000B0437 /* Comments.swift */; };
+		65421CC723A42A12000B0437 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65421CC623A42A12000B0437 /* CommentCell.swift */; };
+		65421CC923A42ACB000B0437 /* FirebaseUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65421CC823A42ACB000B0437 /* FirebaseUtils.swift */; };
 		65440D4C2396E22100D4CEC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65440D4B2396E22100D4CEC2 /* AppDelegate.swift */; };
 		65440D4E2396E22100D4CEC2 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65440D4D2396E22100D4CEC2 /* SignUpViewController.swift */; };
 		65440D512396E22100D4CEC2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65440D4F2396E22100D4CEC2 /* Main.storyboard */; };
@@ -60,6 +65,11 @@
 		239CC167A725C41D2AA38CB7 /* Pods-Artistries.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Artistries.release.xcconfig"; path = "Target Support Files/Pods-Artistries/Pods-Artistries.release.xcconfig"; sourceTree = "<group>"; };
 		34763C350CEE44A3A40DC718 /* Pods-ArtistriesUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArtistriesUITests.debug.xcconfig"; path = "Target Support Files/Pods-ArtistriesUITests/Pods-ArtistriesUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		3E5B4F4D7C88E4F522AAE593 /* Pods-Artistries.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Artistries.debug.xcconfig"; path = "Target Support Files/Pods-Artistries/Pods-Artistries.debug.xcconfig"; sourceTree = "<group>"; };
+		65421CC023A2E0A3000B0437 /* PreviewPhotoContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewPhotoContainerView.swift; sourceTree = "<group>"; };
+		65421CC223A2EC93000B0437 /* CommentsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsController.swift; sourceTree = "<group>"; };
+		65421CC423A429E0000B0437 /* Comments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comments.swift; sourceTree = "<group>"; };
+		65421CC623A42A12000B0437 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
+		65421CC823A42ACB000B0437 /* FirebaseUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseUtils.swift; sourceTree = "<group>"; };
 		65440D482396E22100D4CEC2 /* Artistries.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Artistries.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65440D4B2396E22100D4CEC2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		65440D4D2396E22100D4CEC2 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -166,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				65D31E0923A2CF2E001242FB /* CameraController.swift */,
+				65421CC023A2E0A3000B0437 /* PreviewPhotoContainerView.swift */,
 				65D31E0423A06F8A001242FB /* Search */,
 				65440DA2239AF4F900D4CEC2 /* Home */,
 				65440D9523998A8C00D4CEC2 /* Model */,
@@ -214,6 +225,7 @@
 		65440D9123998A3300D4CEC2 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				65421CC823A42ACB000B0437 /* FirebaseUtils.swift */,
 				65440D7E2396E7DC00D4CEC2 /* Extensions.swift */,
 			);
 			path = Extensions;
@@ -254,6 +266,7 @@
 			children = (
 				65440D8823982A8E00D4CEC2 /* users.swift */,
 				65440D982399E7AD00D4CEC2 /* Post.swift */,
+				65421CC423A429E0000B0437 /* Comments.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -262,6 +275,8 @@
 			isa = PBXGroup;
 			children = (
 				65440D9C239AC67800D4CEC2 /* HomeController.swift */,
+				65421CC223A2EC93000B0437 /* CommentsController.swift */,
+				65421CC623A42A12000B0437 /* CommentCell.swift */,
 				65440D9E239AC6A600D4CEC2 /* HomePostCell.swift */,
 			);
 			path = Home;
@@ -510,6 +525,7 @@
 			files = (
 				65440D8F239989F400D4CEC2 /* PhotoSelectorCell.swift in Sources */,
 				65440D8B2398563300D4CEC2 /* LoginViewController.swift in Sources */,
+				65421CC123A2E0A3000B0437 /* PreviewPhotoContainerView.swift in Sources */,
 				65440D8923982A8E00D4CEC2 /* users.swift in Sources */,
 				65440D4E2396E22100D4CEC2 /* SignUpViewController.swift in Sources */,
 				65440D992399E7AD00D4CEC2 /* Post.swift in Sources */,
@@ -523,11 +539,15 @@
 				65440D7F2396E7DC00D4CEC2 /* Extensions.swift in Sources */,
 				65D31E0623A06FAA001242FB /* SearchViewController.swift in Sources */,
 				65D31E0A23A2CF2E001242FB /* CameraController.swift in Sources */,
+				65421CC923A42ACB000B0437 /* FirebaseUtils.swift in Sources */,
 				65440D9F239AC6A600D4CEC2 /* HomePostCell.swift in Sources */,
 				65440D9B2399E85F00D4CEC2 /* PostCollectionViewCell.swift in Sources */,
+				65421CC523A429E0000B0437 /* Comments.swift in Sources */,
 				65440D8D23997E5600D4CEC2 /* PhotoSelectorController.swift in Sources */,
 				65440DA1239AC6DF00D4CEC2 /* CustomImageView.swift in Sources */,
 				65440D9D239AC67800D4CEC2 /* HomeController.swift in Sources */,
+				65421CC323A2EC93000B0437 /* CommentsController.swift in Sources */,
+				65421CC723A42A12000B0437 /* CommentCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

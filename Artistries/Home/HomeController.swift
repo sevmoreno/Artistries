@@ -9,12 +9,52 @@
 import UIKit
 import Firebase
 
-class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout, HomePostCellDelegate {
+    
+    func didLike(for cell: HomePostCell) {
+        
+        guard let indexPath = collectionView?.indexPath(for: cell) else { return }
+        
+        var post = self.posts[indexPath.item]
+        print(post.caption)
+        
+        
+        
+        guard let postId = post.id else { return }
+        
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        let values = [uid: post.hasLiked == true ? 0 : 1]
+        Database.database().reference().child("likes").child(postId).updateChildValues(values) { (err, _) in
+            
+            if let err = err {
+                print("Failed to like post:", err)
+                return
+            }
+            
+            print("Successfully liked post.")
+            
+            post.hasLiked = !post.hasLiked
+            
+            self.posts[indexPath.item] = post
+            
+            self.collectionView?.reloadItems(at: [indexPath])
+            
+        }
+    }
+    
+    
+    func didTapComment(post: Post) {
+        print("Message coming from HomeController")
+        print(post.caption)
+        let commentsController = CommentsController(collectionViewLayout: UICollectionViewFlowLayout())
+        commentsController.post = post
+        navigationController?.pushViewController(commentsController, animated: true)
+    }
     
     
     
-    
-    
+   
     let cellId = "cellId"
     var posts = [Post]()
     
@@ -131,6 +171,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
             dictionaries.forEach({ (key, value) in
                 
                 // EN KEY LEO EL USUARIO
+                
                 var user = User(uid: indiviudal, dictionary: dictionaries)
                 
                 print("Valor de cada Key")
@@ -153,12 +194,34 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
                     // LEO EL VALUE O SEA EL POST PROPIAMENTE DICHO
                     guard let posteado = value as? [String: Any] else { return }
                  //   print(Post(user: user, dictionary: dictionary))
-                    let post = Post(user: user, dictionary: posteado)
+                    var post = Post(user: user, dictionary: posteado)
+                    post.id = key
+                    
+                    guard let uid = Auth.auth().currentUser?.uid else { return }
+                    Database.database().reference().child("likes").child(key).child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+                        print(snapshot)
+                        
+                        if let value = snapshot.value as? Int, value == 1 {
+                            post.hasLiked = true
+                        } else {
+                            post.hasLiked = false
+                        }
+                        
+                        self.posts.append(post)
+                        self.posts.sort(by: { (p1, p2) -> Bool in
+                            return p1.creationDate.compare(p2.creationDate) == .orderedDescending
+                        })
+                        self.collectionView?.reloadData()
+                        
+                    }, withCancel: { (err) in
+                        print("Failed to fetch like info for post:", err)
+                    })
+                    
                     //  let post = Post(dictionary: dictionary)
-                    self.posts.append(post)
+                 //   self.posts.append(post)
                  
-                   self.collectionView?.reloadData()
-                   self.collectionView?.refreshControl?.endRefreshing()
+                 //  self.collectionView?.reloadData()
+                  //self.collectionView?.refreshControl?.endRefreshing()
 
                 }) { (err) in
                     print("Failed to fetch user:", err)
@@ -242,7 +305,8 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
  
  */
     
-   
+    
+    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
@@ -263,6 +327,8 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! HomePostCell
         
         cell.post = posts[indexPath.item]
+        
+        cell.delegate = self
         
         return cell
     }
