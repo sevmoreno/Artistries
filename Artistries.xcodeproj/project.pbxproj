@@ -13,6 +13,7 @@
 		65421CC523A429E0000B0437 /* Comments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65421CC423A429E0000B0437 /* Comments.swift */; };
 		65421CC723A42A12000B0437 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65421CC623A42A12000B0437 /* CommentCell.swift */; };
 		65421CC923A42ACB000B0437 /* FirebaseUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65421CC823A42ACB000B0437 /* FirebaseUtils.swift */; };
+		65421CCC23A947CC000B0437 /* bellada personal license.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65421CCB23A947CC000B0437 /* bellada personal license.ttf */; };
 		65440D4C2396E22100D4CEC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65440D4B2396E22100D4CEC2 /* AppDelegate.swift */; };
 		65440D4E2396E22100D4CEC2 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65440D4D2396E22100D4CEC2 /* SignUpViewController.swift */; };
 		65440D512396E22100D4CEC2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65440D4F2396E22100D4CEC2 /* Main.storyboard */; };
@@ -70,6 +71,8 @@
 		65421CC423A429E0000B0437 /* Comments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comments.swift; sourceTree = "<group>"; };
 		65421CC623A42A12000B0437 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		65421CC823A42ACB000B0437 /* FirebaseUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseUtils.swift; sourceTree = "<group>"; };
+		65421CCA23A947B6000B0437 /* bellada personal license.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "bellada personal license.ttf"; sourceTree = "<group>"; };
+		65421CCB23A947CC000B0437 /* bellada personal license.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "bellada personal license.ttf"; sourceTree = "<group>"; };
 		65440D482396E22100D4CEC2 /* Artistries.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Artistries.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65440D4B2396E22100D4CEC2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		65440D4D2396E22100D4CEC2 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -175,6 +178,7 @@
 		65440D4A2396E22100D4CEC2 /* Artistries */ = {
 			isa = PBXGroup;
 			children = (
+				65421CCB23A947CC000B0437 /* bellada personal license.ttf */,
 				65D31E0923A2CF2E001242FB /* CameraController.swift */,
 				65421CC023A2E0A3000B0437 /* PreviewPhotoContainerView.swift */,
 				65D31E0423A06F8A001242FB /* Search */,
@@ -294,6 +298,7 @@
 		B37EB0D5DCF8E216E52DFC46 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				65421CCA23A947B6000B0437 /* bellada personal license.ttf */,
 				048EF02524D5A385034444C2 /* Pods_Artistries.framework */,
 				C769FB5E55F55C0DD95F8E30 /* Pods_ArtistriesTests.framework */,
 				FB60C9000637288E806D1075 /* Pods_ArtistriesUITests.framework */,
@@ -412,6 +417,7 @@
 				65440D592396E22300D4CEC2 /* LaunchScreen.storyboard in Resources */,
 				65440D812396F0AD00D4CEC2 /* GoogleService-Info.plist in Resources */,
 				65440D562396E22300D4CEC2 /* Assets.xcassets in Resources */,
+				65421CCC23A947CC000B0437 /* bellada personal license.ttf in Resources */,
 				65440D512396E22100D4CEC2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

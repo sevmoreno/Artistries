@@ -37,10 +37,10 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         
         collectionView?.backgroundColor = .white
         collectionView?.reloadData()
-        
+        // Artistries
         navigationItem.title = Auth.auth().currentUser?.uid
         
-        
+        navigationItem.title = "Artistries"
         collectionView?.register(PostCollectionViewCell.self, forCellWithReuseIdentifier: cellId)
         collectionView?.register(UserHeaderCollectionViewCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headerId")
         collectionView?.register(HomePostCell.self, forCellWithReuseIdentifier: homePostCellId)
@@ -72,7 +72,9 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
             
             self.user = User(uid: uid, dictionary: dictionary)
           
-            self.navigationItem.title = self.user?.username
+           // self.navigationItem.title = self.user?.username
+            
+            
             print("ESTE ES EL USER")
             print(self.user?.username)
             print (self.user?.profileImageUrl)
@@ -198,8 +200,9 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
             return CGSize(width: width, height: width)
             
         } else {
-            
-            var height: CGFloat = 40 + 8 + 8 //username userprofileimageview
+            print("Este es el contendio \(posts[indexPath.row].imageH)")
+            let hayAltura: CGFloat = posts[indexPath.row].imageH ?? 40.0
+            var height: CGFloat = hayAltura + 8 + 8 //username userprofileimageview
             height += view.frame.width
             height += 50
             height += 60

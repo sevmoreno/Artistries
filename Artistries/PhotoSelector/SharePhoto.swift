@@ -64,8 +64,12 @@ class SharePhotoController: UIViewController {
         navigationItem.rightBarButtonItem?.isEnabled = false
         
         let filename = NSUUID().uuidString
+        // DONDE VA SI A DISCOVERY O POST
         
-        let storageRef = Storage.storage().reference().child("posts").child(filename)
+        // let storageRef = Storage.storage().reference().child("posts").child(filename)
+        
+        let storageRef = Storage.storage().reference().child("curators").child(filename)
+        
         storageRef.putData(uploadData, metadata: nil) { (metadata, err) in
             
             if let err = err {

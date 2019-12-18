@@ -27,7 +27,7 @@ class UserHeaderCollectionViewCell: UICollectionViewCell {
             
             usernameLabel.text = user?.username
             
-             setupEditFollowButton()
+            setupEditFollowButton()
         }
     }
     
@@ -216,15 +216,22 @@ class UserHeaderCollectionViewCell: UICollectionViewCell {
         profileImageView.layer.cornerRadius = 80 / 2
         profileImageView.clipsToBounds = true
         
+        
+      //  profileImageView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        
         setupBottomToolbar()
         
         addSubview(usernameLabel)
         usernameLabel.anchor(top: profileImageView.bottomAnchor, left: leftAnchor, bottom: gridButton.topAnchor, right: rightAnchor, paddingTop: 4, paddingLeft: 12, paddingBottom: 0, paddingRight: 12, width: 0, height: 0)
         
-        setupUserStatsView()
+      //  setupUserStatsView()
         
         addSubview(editProfileFollowButton)
-        editProfileFollowButton.anchor(top: postsLabel.bottomAnchor, left: postsLabel.leftAnchor, bottom: nil, right: followingLabel.rightAnchor, paddingTop: 2, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 34)
+       // editProfileFollowButton.anchor(top: postsLabel.bottomAnchor, left: postsLabel.leftAnchor, bottom: nil, right: followingLabel.rightAnchor, paddingTop: 2, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 34)
+        
+        editProfileFollowButton.anchor(top: nil, left: profileImageView.rightAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 180, paddingBottom: 0, paddingRight: 0, width: 80, height: 34)
+        
+        editProfileFollowButton.centerYAnchor.constraint(equalTo: profileImageView.centerYAnchor).isActive = true
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -238,6 +245,7 @@ class UserHeaderCollectionViewCell: UICollectionViewCell {
         
         addSubview(stackView)
         stackView.anchor(top: topAnchor, left: profileImageView.rightAnchor, bottom: nil, right: rightAnchor, paddingTop: 12, paddingLeft: 12, paddingBottom: 0, paddingRight: 12, width: 0, height: 50)
+        
     }
     
     fileprivate func setupBottomToolbar() {
@@ -248,8 +256,8 @@ class UserHeaderCollectionViewCell: UICollectionViewCell {
         let bottomDividerView = UIView()
         bottomDividerView.backgroundColor = UIColor.lightGray
         
-        let stackView = UIStackView(arrangedSubviews: [gridButton, listButton, bookmarkButton])
-        
+  //      let stackView = UIStackView(arrangedSubviews: [gridButton, listButton, bookmarkButton])
+        let stackView = UIStackView(arrangedSubviews: [gridButton, listButton])
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
         

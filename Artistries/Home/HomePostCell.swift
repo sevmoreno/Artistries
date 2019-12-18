@@ -24,6 +24,8 @@ class HomePostCell: UICollectionViewCell {
              likeButton.setImage(post?.hasLiked == true ? #imageLiteral(resourceName: "like_selected").withRenderingMode(.alwaysOriginal) : #imageLiteral(resourceName: "like_unselected").withRenderingMode(.alwaysOriginal), for: .normal)
             
              photoImageView.loadImage(urlString: postImageUrl)
+          //  print("Este es el conentido de la altura: \(photoImageView.image?.size.height)")
+             post?.imageH = photoImageView.image?.size.height
              usernameLabel.text = post?.user.username
             guard let profileuserURL = post?.user.profileImageUrl else {return}
             userProfileImageView.loadImage(urlString: profileuserURL)
@@ -62,9 +64,11 @@ class HomePostCell: UICollectionViewCell {
         return iv
     }()
     
-    let photoImageView: CustomImageView = {
+    var photoImageView: CustomImageView = {
         let iv = CustomImageView()
-        iv.contentMode = .scaleAspectFill
+      //  iv.contentMode = .scaleAspectFill
+  
+        iv.contentMode = .scaleAspectFit
         iv.clipsToBounds = true
         return iv
     }()
@@ -143,6 +147,7 @@ class HomePostCell: UICollectionViewCell {
         addSubview(photoImageView)
         
         
+        
         userProfileImageView.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 8, paddingLeft: 8, paddingBottom: 0, paddingRight: 0, width: 40, height: 40)
         userProfileImageView.layer.cornerRadius = 40 / 2
         
@@ -160,15 +165,15 @@ class HomePostCell: UICollectionViewCell {
     }
     
     fileprivate func setupActionButtons() {
-        let stackView = UIStackView(arrangedSubviews: [likeButton, commentButton, sendMessageButton])
-        
+      //  let stackView = UIStackView(arrangedSubviews: [likeButton, commentButton, sendMessageButton])
+         let stackView = UIStackView(arrangedSubviews: [likeButton, commentButton])
         stackView.distribution = .fillEqually
         
         addSubview(stackView)
         stackView.anchor(top: photoImageView.bottomAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 4, paddingBottom: 0, paddingRight: 0, width: 120, height: 50)
         
-        addSubview(bookmarkButton)
-        bookmarkButton.anchor(top: photoImageView.bottomAnchor, left: nil, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 40, height: 50)
+      //  addSubview(bookmarkButton)
+       // bookmarkButton.anchor(top: photoImageView.bottomAnchor, left: nil, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 40, height: 50)
     }
     
     required init?(coder aDecoder: NSCoder) {

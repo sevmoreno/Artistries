@@ -19,7 +19,6 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         print(post.caption)
         
         
-        
         guard let postId = post.id else { return }
         
         guard let uid = Auth.auth().currentUser?.uid else { return }
@@ -62,9 +61,13 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
         NotificationCenter.default.addObserver(self, selector: #selector(handleUpdateFeed), name: SharePhotoController.updateFeedNotificationName, object: nil)
         super.viewDidLoad()
+        // collectionView?.backgroundColor = .white
+        
+     //   collectionView?.backgroundColor = .rgb(red: 249, green: 230, blue: 220)
+        
+        navigationItem.title = "Artistries"
+        
         collectionView?.backgroundColor = .white
-        
-        
         
         collectionView?.reloadData()
         
@@ -84,9 +87,11 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     func setupNavigationItems() {
-        navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "logo2"))
-        
+  
+    
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "camera3").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleCamera))
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "upload").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handlePost))
     }
     
     @objc func handleCamera() {
@@ -94,6 +99,16 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
         let cameraController = CameraController()
         present(cameraController, animated: true, completion: nil)
+    }
+    
+    
+    @objc func handlePost() {
+        print("Showing camera")
+        let layout2 = UICollectionViewFlowLayout()
+        let photoSelectorController = PhotoSelectorController(collectionViewLayout: layout2)
+        let homeNavController = UINavigationController(rootViewController: photoSelectorController)
+       // let cameraController = CameraController()
+        present(homeNavController, animated: true, completion: nil)
     }
     
     @objc func handleUpdateFeed() {
@@ -310,12 +325,34 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
+        
+   //     let photoTemp = CustomImageView()
+      //  photoTemp.loadImage(urlString: posts[indexPath.row].imageUrl)
+   //     let altura = photoTemp.image!.size.height
+        
+       // var height: CGFloat = 40 + 8 + 8 //username userprofileimageview
         var height: CGFloat = 40 + 8 + 8 //username userprofileimageview
         height += view.frame.width
         height += 50
         height += 60
         
         return CGSize(width: view.frame.width, height: height)
+ 
+   /*
+        let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 50)
+        let dummyCell = HomePostCell(frame: frame)
+       // dummyCell.comment = comments[indexPath.item]
+        let photoTemp = CustomImageView()
+        photoTemp.loadImage(urlString: posts[indexPath.row].imageUrl)
+        dummyCell.photoImageView = photoTemp
+        dummyCell.layoutIfNeeded()
+        
+        let targetSize = CGSize(width: view.frame.width, height: 1000)
+        let estimatedSize = dummyCell.systemLayoutSizeFitting(targetSize)
+        
+        let height = max(40 + 8 + 8, estimatedSize.height)
+        return CGSize(width: view.frame.width, height: height)
+*/
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

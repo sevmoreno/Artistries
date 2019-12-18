@@ -13,15 +13,41 @@ class LoginViewController: UIViewController {
     let logoContainerView: UIView = {
         let view = UIView()
         
-       // let logoImageView = UIImageView(image: #imageLiteral(resourceName: "Instagram_logo_white"))
-       // logoImageView.contentMode = .scaleAspectFill
+        //  let logoImageView = UIImageView(image: #imageLiteral(resourceName: "Instagram_logo_white"))
+         // logoImageView.contentMode = .scaleAspectFill
+        var titleLabel = UILabel ()
+      //  titleLabel.font.familyName = "bellada personal license.ttf"
+        
+        
+        for family in UIFont.familyNames.sorted() {
+            let names = UIFont.fontNames(forFamilyName: family)
+            print("Family: \(family) Font names: \(names)")
+        }
+        
+        guard let customFont = UIFont(name: "Bellada-Regular", size:40.0) else {
+            fatalError("""
+        Failed to load the "CustomFont-Light" font.
+        Make sure the font file is included in the project and the font name is spelled correctly.
+        """
+            )
+        }
+        titleLabel.font = UIFontMetrics.default.scaledFont(for: customFont)
+        titleLabel.adjustsFontForContentSizeCategory = true
+        titleLabel.text = "Artistries"
+        titleLabel.textColor = .white
+        
+        view.addSubview(titleLabel)
+        titleLabel.anchor(top: nil, left: nil, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+       titleLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         
       //  view.addSubview(logoImageView)
      //   logoImageView.anchor(top: nil, left: nil, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 200, height: 50)
       //  logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
      //   logoImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         
-        view.backgroundColor = UIColor.rgb(red: 0, green: 120, blue: 175)
+       // view.backgroundColor = UIColor.rgb(red: 0, green: 120, blue: 175)
+        view.backgroundColor = .black
         return view
     }()
     
@@ -51,8 +77,8 @@ class LoginViewController: UIViewController {
     let loginButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Login", for: .normal)
-        button.backgroundColor = UIColor.rgb(red: 149, green: 204, blue: 244)
-        
+       // button.backgroundColor = UIColor.rgb(red: 149, green: 204, blue: 244)
+        button.backgroundColor = .black
         button.layer.cornerRadius = 5
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         button.setTitleColor(.white, for: .normal)
@@ -132,7 +158,7 @@ class LoginViewController: UIViewController {
         view.backgroundColor = .white
         
         view.addSubview(dontHaveAccountButton)
-        dontHaveAccountButton.anchor(top: nil, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 50)
+        dontHaveAccountButton.anchor(top: nil, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 50, paddingRight: 0, width: 0, height: 50)
         
         setupInputFields()
     }

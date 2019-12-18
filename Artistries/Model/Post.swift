@@ -6,6 +6,7 @@
 //  Copyright © 2019 Juan Moreno. All rights reserved.
 //
 import Foundation
+import UIKit
 
 struct Post {
      var id: String?
@@ -15,6 +16,7 @@ struct Post {
     let caption: String
     let creationDate: Date
     
+    var imageH: CGFloat?
     var hasLiked = false
     
     init(user: User, dictionary: [String: Any]) {
