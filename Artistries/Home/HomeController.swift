@@ -11,6 +11,60 @@ import Firebase
 
 class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout, HomePostCellDelegate {
     
+    
+    func didBookmarked(cell: HomePostCell) {
+        
+        guard let indice = collectionView?.indexPath(for: cell) else { return }
+        
+        var post = self.posts[indice.row]
+        
+        guard let id = post.id else { return }
+        
+        
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        
+        //                                                 uid                                         id -LwK937fnFjty_bYkLhV
+
+        Database.database().reference().child("posts").child(uid).child(id).observeSingleEvent(of: .value) { (dataSnap) in
+            
+            print("usuario")
+            print(uid)
+            print("Data Snap que tenemso")
+            print(dataSnap.value)
+            
+            // si dataSnap es null agregamos este post a los post del usuario.... mmmm es un porfolio no te mares
+            //  
+            
+            let userPostRef = Database.database().reference().child("posts").child(uid)
+            let ref = userPostRef.childByAutoId()
+            
+            let values = ["imageUrl": post.imageUrl, "caption": post.caption, "creationDate": Date().timeIntervalSince1970, "artist":post.artist] as [String : Any]
+            
+            ref.updateChildValues(values) { (err, ref) in
+                if let err = err {
+                    self.navigationItem.rightBarButtonItem?.isEnabled = true
+                    print("Failed to save post to DB", err)
+                    return
+                }
+                
+                print("Successfully saved post to DB")
+               // self.dismiss(animated: true, completion: nil)
+              //  NotificationCenter.default.post(name: SharePhotoController.updateFeedNotificationName, object: nil)
+              //  _ = self.navigationController?.popViewController(animated: true)
+                
+            }
+        }
+        
+        
+        
+        
+        
+    }
+    
+
+    
+    
     func didLike(for cell: HomePostCell) {
         
         guard let indexPath = collectionView?.indexPath(for: cell) else { return }

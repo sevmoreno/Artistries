@@ -60,6 +60,8 @@ class SearchViewController: UICollectionViewController, UICollectionViewDelegate
     var filteredUsers = [User]()
     var users = [User]()
     
+  
+    
     fileprivate func fetchUsers() {
         print("Fetching users..")
         

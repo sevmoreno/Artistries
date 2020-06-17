@@ -37,6 +37,8 @@
 		65440D9D239AC67800D4CEC2 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65440D9C239AC67800D4CEC2 /* HomeController.swift */; };
 		65440D9F239AC6A600D4CEC2 /* HomePostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65440D9E239AC6A600D4CEC2 /* HomePostCell.swift */; };
 		65440DA1239AC6DF00D4CEC2 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65440DA0239AC6DF00D4CEC2 /* CustomImageView.swift */; };
+		65B8374E2491507B00A67FA1 /* CuratorSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B8374D2491507B00A67FA1 /* CuratorSelection.swift */; };
+		65B8375024929A9100A67FA1 /* NewDiscoveryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B8374F24929A9100A67FA1 /* NewDiscoveryCell.swift */; };
 		65D31E0623A06FAA001242FB /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D31E0523A06FAA001242FB /* SearchViewController.swift */; };
 		65D31E0823A15EA0001242FB /* UserSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D31E0723A15EA0001242FB /* UserSearchCell.swift */; };
 		65D31E0A23A2CF2E001242FB /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D31E0923A2CF2E001242FB /* CameraController.swift */; };
@@ -102,6 +104,8 @@
 		65440D9C239AC67800D4CEC2 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		65440D9E239AC6A600D4CEC2 /* HomePostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePostCell.swift; sourceTree = "<group>"; };
 		65440DA0239AC6DF00D4CEC2 /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
+		65B8374D2491507B00A67FA1 /* CuratorSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuratorSelection.swift; sourceTree = "<group>"; };
+		65B8374F24929A9100A67FA1 /* NewDiscoveryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDiscoveryCell.swift; sourceTree = "<group>"; };
 		65D31E0523A06FAA001242FB /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		65D31E0723A15EA0001242FB /* UserSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchCell.swift; sourceTree = "<group>"; };
 		65D31E0923A2CF2E001242FB /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
@@ -261,6 +265,8 @@
 				65440D962399B9E300D4CEC2 /* SharePhoto.swift */,
 				65440D8E239989F400D4CEC2 /* PhotoSelectorCell.swift */,
 				65440D8C23997E5600D4CEC2 /* PhotoSelectorController.swift */,
+				65B8374D2491507B00A67FA1 /* CuratorSelection.swift */,
+				65B8374F24929A9100A67FA1 /* NewDiscoveryCell.swift */,
 			);
 			path = PhotoSelector;
 			sourceTree = "<group>";
@@ -542,8 +548,10 @@
 				65440D83239738A500D4CEC2 /* MainTabBarController().swift in Sources */,
 				65440D87239829D200D4CEC2 /* UserHeaderCollectionViewCell.swift in Sources */,
 				65440D542396E22100D4CEC2 /* Artistries.xcdatamodeld in Sources */,
+				65B8375024929A9100A67FA1 /* NewDiscoveryCell.swift in Sources */,
 				65440D7F2396E7DC00D4CEC2 /* Extensions.swift in Sources */,
 				65D31E0623A06FAA001242FB /* SearchViewController.swift in Sources */,
+				65B8374E2491507B00A67FA1 /* CuratorSelection.swift in Sources */,
 				65D31E0A23A2CF2E001242FB /* CameraController.swift in Sources */,
 				65421CC923A42ACB000B0437 /* FirebaseUtils.swift in Sources */,
 				65440D9F239AC6A600D4CEC2 /* HomePostCell.swift in Sources */,

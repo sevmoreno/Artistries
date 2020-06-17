@@ -98,24 +98,37 @@ class SharePhotoController: UIViewController {
         
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
-        let userPostRef = Database.database().reference().child("posts").child(uid)
-        let ref = userPostRef.childByAutoId()
-        
-        let values = ["imageUrl": imageUrl, "caption": caption, "imageWidth": postImage.size.width, "imageHeight": postImage.size.height, "creationDate": Date().timeIntervalSince1970] as [String : Any]
-        
-        ref.updateChildValues(values) { (err, ref) in
-            if let err = err {
-                self.navigationItem.rightBarButtonItem?.isEnabled = true
-                print("Failed to save post to DB", err)
-                return
-            }
+        Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value) { (usuario) in
             
-            print("Successfully saved post to DB")
-            self.dismiss(animated: true, completion: nil)
-            NotificationCenter.default.post(name: SharePhotoController.updateFeedNotificationName, object: nil)
-            _ = self.navigationController?.popViewController(animated: true)
+            guard let datos = usuario.value as? [String:String] else {return}
             
+            let userName = datos["username"]
+            
+            print(userName)
+            
+            
+            let userPostRef = Database.database().reference().child("posts").child(uid)
+                  let ref = userPostRef.childByAutoId()
+                  
+                  let values = ["imageUrl": imageUrl, "caption": caption, "imageWidth": postImage.size.width, "imageHeight": postImage.size.height,
+                                "creationDate": Date().timeIntervalSince1970, "artist" : userName as? String ?? ""] as [String : Any]
+                  
+                  ref.updateChildValues(values) { (err, ref) in
+                      if let err = err {
+                          self.navigationItem.rightBarButtonItem?.isEnabled = true
+                          print("Failed to save post to DB", err)
+                          return
+                      }
+                      
+                      print("Successfully saved post to DB")
+                      self.dismiss(animated: true, completion: nil)
+                      NotificationCenter.default.post(name: SharePhotoController.updateFeedNotificationName, object: nil)
+                      _ = self.navigationController?.popViewController(animated: true)
+                      
+                  }
         }
+        
+      
     }
     
     override var prefersStatusBarHidden: Bool {

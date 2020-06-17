@@ -110,7 +110,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         // Home
         
         let layout2 = UICollectionViewFlowLayout()
-        let photoSelectorController = PhotoSelectorController(collectionViewLayout: layout2)
+        let photoSelectorController = CuratorSelectorController(collectionViewLayout: layout2)
         let homeNavController = UINavigationController(rootViewController: photoSelectorController)
         photoSelectorController.tabBarItem.image = UIImage(named: "da-vinci")
         photoSelectorController.tabBarItem.title = "Curators"

@@ -13,6 +13,8 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
     
      var isGridView = true
     
+     var hiddenNav = false
+    
     func didChangeToListView() {
         print("cambio")
         isGridView = false
@@ -41,6 +43,7 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         navigationItem.title = Auth.auth().currentUser?.uid
         
         navigationItem.title = "Artistries"
+        
         collectionView?.register(PostCollectionViewCell.self, forCellWithReuseIdentifier: cellId)
         collectionView?.register(UserHeaderCollectionViewCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headerId")
         collectionView?.register(HomePostCell.self, forCellWithReuseIdentifier: homePostCellId)
@@ -54,6 +57,14 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         
         
     }
+    
+    override var prefersStatusBarHidden: Bool {
+        
+        
+        return hiddenNav
+    }
+    
+    
     
     fileprivate func fetchUser() {
         

@@ -11,6 +11,8 @@ import UIKit
 protocol HomePostCellDelegate {
     func didTapComment(post: Post)
     func didLike(for cell: HomePostCell)
+    
+    func didBookmarked(cell: HomePostCell) 
 }
 
 
@@ -26,7 +28,7 @@ class HomePostCell: UICollectionViewCell {
              photoImageView.loadImage(urlString: postImageUrl)
           //  print("Este es el conentido de la altura: \(photoImageView.image?.size.height)")
              post?.imageH = photoImageView.image?.size.height
-             usernameLabel.text = post?.user.username
+             usernameLabel.text = post?.artist
             guard let profileuserURL = post?.user.profileImageUrl else {return}
             userProfileImageView.loadImage(urlString: profileuserURL)
             //print("ESTE ES EL USUERNAME CELL")
@@ -108,7 +110,13 @@ class HomePostCell: UICollectionViewCell {
         return button
     }()
     
-   
+    @objc func handleBookmark () {
+        
+        bookmarkButton.setImage(UIImage(named: "ribbon selected")!.withRenderingMode(.alwaysOriginal), for: .normal)
+        
+        delegate?.didBookmarked(cell: self)
+        
+    }
     
     @objc func handleComment() {
         print("Trying to show comments...")
@@ -124,9 +132,12 @@ class HomePostCell: UICollectionViewCell {
         return button
     }()
     
-    let bookmarkButton: UIButton = {
+    lazy var bookmarkButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(#imageLiteral(resourceName: "ribbon").withRenderingMode(.alwaysOriginal), for: .normal)
+        button.addTarget(self, action: #selector(handleBookmark), for: .touchUpInside)
+       
+        
         return button
     }()
     
@@ -143,7 +154,7 @@ class HomePostCell: UICollectionViewCell {
         super.init(frame: frame)
         addSubview(userProfileImageView)
         addSubview(usernameLabel)
-        addSubview(optionsButton)
+    //   addSubview(optionsButton)
         addSubview(photoImageView)
         
         
@@ -151,9 +162,9 @@ class HomePostCell: UICollectionViewCell {
         userProfileImageView.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 8, paddingLeft: 8, paddingBottom: 0, paddingRight: 0, width: 40, height: 40)
         userProfileImageView.layer.cornerRadius = 40 / 2
         
-        usernameLabel.anchor(top: topAnchor, left: userProfileImageView.rightAnchor, bottom: photoImageView.topAnchor, right: optionsButton.leftAnchor, paddingTop: 0, paddingLeft: 8, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        usernameLabel.anchor(top: topAnchor, left: userProfileImageView.rightAnchor, bottom: photoImageView.topAnchor, right: nil, paddingTop: 0, paddingLeft: 8, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         
-        optionsButton.anchor(top: topAnchor, left: nil, bottom: photoImageView.topAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 44, height: 0)
+      // optionsButton.anchor(top: topAnchor, left: nil, bottom: photoImageView.topAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 44, height: 0)
         
         photoImageView.anchor(top: userProfileImageView.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 8, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         photoImageView.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 1).isActive = true
@@ -172,8 +183,8 @@ class HomePostCell: UICollectionViewCell {
         addSubview(stackView)
         stackView.anchor(top: photoImageView.bottomAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 4, paddingBottom: 0, paddingRight: 0, width: 120, height: 50)
         
-      //  addSubview(bookmarkButton)
-       // bookmarkButton.anchor(top: photoImageView.bottomAnchor, left: nil, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 40, height: 50)
+        addSubview(bookmarkButton)
+        bookmarkButton.anchor(top: photoImageView.bottomAnchor, left: nil, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 40, height: 50)
     }
     
     required init?(coder aDecoder: NSCoder) {

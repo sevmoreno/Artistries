@@ -16,6 +16,8 @@ struct Post {
     let caption: String
     let creationDate: Date
     
+    let artist: String
+    
     var imageH: CGFloat?
     var hasLiked = false
     
@@ -25,5 +27,8 @@ struct Post {
         self.caption = dictionary["caption"] as? String ?? ""
         let secondsFrom1970 = dictionary["creationDate"] as? Double ?? 0
         self.creationDate = Date(timeIntervalSince1970: secondsFrom1970)
+        
+        self.artist = dictionary["artist"] as? String ?? user.username
+        
     }
 }
