@@ -138,6 +138,17 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         fetchFollowingUserIds()
         //porusuario()
         
+        
+        NetworkManager.shared.getSessionKey()
+        
+        
+        // *********************** DANGER DANGER
+       
+     //   NetworkManager.shared.getArtist()
+        
+        // ***************************************************************
+        
+        
     }
     
     func setupNavigationItems() {
@@ -184,8 +195,8 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
             
             userIdsDictionary.forEach({ (key,value) in
                 
-                print("Sigo a este")
-                print(key)
+           //     print("Sigo a este")
+          //      print(key)
                self.fetchPostsTodos(indiviudal: key)
             })
             
@@ -230,8 +241,8 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
             
             guard let userDictionary = snapshot.value as? [String: Any] else { return }
             
-            print("ESTE ES LO QUE TIENE POST")
-            print(userDictionary)
+         //   print("ESTE ES LO QUE TIENE POST")
+         //   print(userDictionary)
             
             // let user = User(dictionary: userDictionary)
             
@@ -243,12 +254,12 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
                 
                 var user = User(uid: indiviudal, dictionary: dictionaries)
                 
-                print("Valor de cada Key")
-                print(key)
+              //  print("Valor de cada Key")
+            //    print(key)
                 Database.database().reference().child("users").child(indiviudal).observeSingleEvent(of: .value, with: { (snapshot) in
                     
-                    print("VALUE DE KEY")
-                    print(snapshot.value ?? "")
+                //    print("VALUE DE KEY")
+//print(snapshot.value ?? "")
                     
                     guard let dictionary = snapshot.value as? [String: Any] else { print("Salgo2 en usuario");return }
                     
@@ -417,7 +428,11 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! HomePostCell
         
+        if indexPath.item > 0 || indexPath.item != nil {
+        
         cell.post = posts[indexPath.item]
+            
+        }
         
         cell.delegate = self
         

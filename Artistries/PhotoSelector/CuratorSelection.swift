@@ -158,7 +158,9 @@ class CuratorSelectorController: UICollectionViewController, UICollectionViewDel
 //                                print(snapdata.value)
                                // print(idPosts.value)
                                 
-                                let usuarioNuevo = User(uid: usuarioId, dictionary: snapdata.value as! [String:String])
+                                guard let datos = snapdata.value as? [String:String] else { return }
+                                
+                                let usuarioNuevo = User(uid: usuarioId, dictionary: datos) 
                                 
                                 let post = Post(user: usuarioNuevo, dictionary: valuor as! [String : Any])
                                 
